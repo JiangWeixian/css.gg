@@ -16,17 +16,17 @@ Object.keys(icons).forEach(k => {
     originalname: k,
     css,
   })
-  fs.outputFileSync(path.resolve(__dirname, `../src/icons/${name}.tsx`), result)
+  fs.outputFileSync(path.resolve(__dirname, `../src/tsx/${name}.tsx`), result)
 })
 
 const exportIcons = Object.keys(icons).map(k => {
   const name = `${camelcase(k)[0].toUpperCase()}${camelcase(k).slice(1)}`
   return {
-    export: `export { ${name} } from './icons/${name}'`,
+    export: `export { ${name} } from './tsx/${name}'`,
   }
 })
 
 const entry = mustache.render(entryTpl.toString(), {
   exports: exportIcons,
 })
-fs.outputFileSync(path.resolve(__dirname, `../src/index.ts`), entry)
+fs.outputFileSync(path.resolve(__dirname, `../src/all.ts`), entry)
