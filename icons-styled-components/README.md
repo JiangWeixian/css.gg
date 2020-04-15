@@ -21,3 +21,10 @@ export default function() {
   )
 }
 ```
+
+## for dev
+
+```bash
+npm install
+npm run build
+```
